@@ -1,20 +1,26 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
-import { CoreModule } from './core/core.module';
-import { SharedModule } from './shared/shared.module';
-
-import { AppRoutingModule } from './app-routing.module';
-
-// NG Translate
-import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-
-import { HomeModule } from './home/home.module';
-import { DetailModule } from './detail/detail.module';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 
 import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app-routing.module';
+import { BrowserModule } from '@angular/platform-browser';
+import { CoreModule } from './core/core.module';
+import { CpuModule } from './components/cpu/cpu.module';
+import { FormsModule } from '@angular/forms';
+import { HomeModule } from './home/home.module';
+import { NgModule } from '@angular/core';
+import { SharedModule } from './shared/shared.module';
+import { SystemModule } from './components/system/system.module';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
+// NG Translate
+
+
+
+
+
+
+
 
 // AoT requires an exported function for factories
 const httpLoaderFactory = (http: HttpClient): TranslateHttpLoader =>  new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -28,7 +34,8 @@ const httpLoaderFactory = (http: HttpClient): TranslateHttpLoader =>  new Transl
     CoreModule,
     SharedModule,
     HomeModule,
-    DetailModule,
+    CpuModule,
+    SystemModule,
     AppRoutingModule,
     TranslateModule.forRoot({
       loader: {

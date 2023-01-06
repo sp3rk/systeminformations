@@ -1,9 +1,10 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { PageNotFoundComponent } from './shared/components';
+import { RouterModule, Routes } from '@angular/router';
 
+import { CpuRoutingModule } from './components/cpu/cpu-routing.module';
 import { HomeRoutingModule } from './home/home-routing.module';
-import { DetailRoutingModule } from './detail/detail-routing.module';
+import { NgModule } from '@angular/core';
+import { PageNotFoundComponent } from './shared/components';
+import { SystemRoutingModule } from './components/system/system-routing.module';
 
 const routes: Routes = [
   {
@@ -21,7 +22,8 @@ const routes: Routes = [
   imports: [
     RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' }),
     HomeRoutingModule,
-    DetailRoutingModule
+    CpuRoutingModule,
+    SystemRoutingModule
   ],
   exports: [RouterModule]
 })

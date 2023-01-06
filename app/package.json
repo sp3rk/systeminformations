@@ -1,13 +1,14 @@
 {
-  "name": "angular-electron",
-  "description": "Angular Electron sample",
+  "name": "systeminformation",
+  "description": "app to get systeminformations",
   "author": {
-    "name": "Maxime GRIS",
-    "email": "maxime.gris@gmail.com"
+    "name": "Kevin Püchl",
+    "email": "kevin.puechl@googlemail.com"
   },
-  "version": "11.2.0",
+  "version": "0.0.1",
   "main": "main.js",
   "private": true,
   "dependencies": {
+    "systeminformation": "^5.17.0"
   }
 }

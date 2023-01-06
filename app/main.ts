@@ -1,6 +1,8 @@
-import {app, BrowserWindow, screen} from 'electron';
-import * as path from 'path';
 import * as fs from 'fs';
+import * as path from 'path';
+import * as si from 'systeminformation';
+
+import { BrowserWindow, app, ipcMain, screen } from 'electron';
 
 let win: BrowserWindow = null;
 const args = process.argv.slice(1),
@@ -34,7 +36,7 @@ function createWindow(): BrowserWindow {
     let pathIndex = './index.html';
 
     if (fs.existsSync(path.join(__dirname, '../dist/index.html'))) {
-       // Path when running electron in local folder
+      // Path when running electron in local folder
       pathIndex = '../dist/index.html';
     }
 
@@ -49,6 +51,8 @@ function createWindow(): BrowserWindow {
     // when you should delete the corresponding element.
     win = null;
   });
+
+  // cpuData();
 
   return win;
 }
@@ -81,3 +85,14 @@ try {
   // Catch Error
   // throw e;
 }
+
+ipcMain.handle('si-system', () => {
+  console.log('si.system()');
+  return si.system();
+});
+
+ipcMain.handle('si-cpu', () => {
+  console.log('si.cpu()');
+  return si.cpu();
+});
+

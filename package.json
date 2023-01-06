@@ -1,26 +1,12 @@
 {
-  "name": "angular-electron",
-  "version": "11.2.0",
-  "description": "Angular 14 with Electron 21 (Typescript + SASS + Hot Reload)",
-  "homepage": "https://github.com/maximegris/angular-electron",
+  "name": "systeminformation",
+  "version": "0.0.1",
+  "description": "app to get systeminformations",
   "author": {
-    "name": "Maxime GRIS",
-    "email": "maxime.gris@gmail.com"
+    "name": "Kevin Püchl",
+    "email": "kevin.puechl@googlemail.com"
   },
-  "keywords": [
-    "angular",
-    "angular 14",
-    "electron",
-    "electron 19",
-    "nodejs",
-    "typescript",
-    "playwright",
-    "eslint",
-    "sass",
-    "windows",
-    "mac",
-    "linux"
-  ],
+  "keywords": [],
   "main": "app/main.js",
   "private": true,
   "scripts": {
@@ -50,10 +36,12 @@
     "@angular/core": "14.2.6",
     "@angular/forms": "14.2.6",
     "@angular/language-service": "14.2.6",
+    "@angular/material": "7.0.0",
     "@angular/platform-browser": "14.2.6",
     "@angular/platform-browser-dynamic": "14.2.6",
     "@angular/router": "14.2.6",
     "rxjs": "7.5.7",
+    "systeminformation": "5.17.0",
     "tslib": "^2.4.0",
     "zone.js": "~0.11.8"
   },

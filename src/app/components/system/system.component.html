@@ -1,0 +1,14 @@
+<div class="container">
+  <h1 class="title">
+    {{ 'PAGES.SYSTEM.TITLE' | translate }}
+  </h1>
+
+  <a routerLink="/">{{ 'PAGES.SYSTEM.BACK_TO_HOME' | translate }}</a>
+
+  <ng-container *ngIf="system$ | async; else loading">
+    <pre class="json">{{ system$ | async | json }}</pre>
+  </ng-container>
+
+  <ng-template #loading><p style="color: #fff;">Loading ...</p></ng-template>
+
+</div>
