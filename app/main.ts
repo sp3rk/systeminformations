@@ -9,15 +9,17 @@ const args = process.argv.slice(1),
   serve = args.some(val => val === '--serve');
 
 function createWindow(): BrowserWindow {
-
+//
   const size = screen.getPrimaryDisplay().workAreaSize;
 
   // Create the browser window.
   win = new BrowserWindow({
-    x: 0,
-    y: 0,
-    width: size.width,
-    height: size.height,
+    // x: 0,
+    // y: 0,
+    // width: size.width,
+    // height: size.height,
+    width: 1200,
+    height: 800,
     webPreferences: {
       nodeIntegration: true,
       allowRunningInsecureContent: (serve),
@@ -86,13 +88,14 @@ try {
   // throw e;
 }
 
-ipcMain.handle('si-system', () => {
-  console.log('si.system()');
-  return si.system();
+ipcMain.handle('si-getStaticData', () => {
+  return si.getStaticData();
 });
 
-ipcMain.handle('si-cpu', () => {
-  console.log('si.cpu()');
-  return si.cpu();
+ipcMain.handle('si-getDynamicData', () => {
+  return si.getDynamicData();
 });
 
+ipcMain.handle('si-users', () => {
+  return si.users();
+});

@@ -1,0 +1,28 @@
+<table class="keyValue">
+  <tbody>
+    <!-- <tr *ngFor="let item of bios | keyvalue">
+      <td class="key">{{ item.key | translate }}</td>
+      <td class="value">{{ item.value }}</td>
+    </tr> -->
+    <tr>
+      <td class="key">{{ "vendor" | translate }}</td>
+      <td class="value">{{ bios.vendor }}</td>
+    </tr>
+    <tr>
+      <td class="key">{{ "version" | translate }}</td>
+      <td class="value">{{ bios.version }}</td>
+    </tr>
+    <tr>
+      <td class="key">{{ "releaseDate" | translate }}</td>
+      <td class="value">{{ bios.releaseDate }}</td>
+    </tr>
+    <tr>
+      <td class="key">{{ "revision" | translate }}</td>
+      <td class="value">{{ bios.revision }}</td>
+    </tr>
+    <tr>
+      <td class="key">{{ "serial" | translate }}</td>
+      <td class="value">{{ bios.serial }}</td>
+    </tr>
+  </tbody>
+</table>

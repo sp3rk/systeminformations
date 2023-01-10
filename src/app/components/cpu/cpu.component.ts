@@ -1,9 +1,6 @@
 import * as si from 'systeminformation';
 
-import { Component, OnInit } from '@angular/core';
-
-import { DataService } from '../../core/services/data.service';
-import { Observable } from 'rxjs';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-cpu',
@@ -12,14 +9,12 @@ import { Observable } from 'rxjs';
 })
 export class CpuComponent implements OnInit {
 
-  cpu$: Observable<si.Systeminformation.CpuData>;
+  @Input() cpu: si.Systeminformation.CpuData;
 
-  constructor(private dataService: DataService) {
-    this.cpu$ = this.dataService.cpu$;
-  }
+  constructor() {}
 
   ngOnInit(): void {
-    console.log('CpuComponent INIT');
+    console.log('CpuComponent -> ngOnInit()');
   }
 
 }

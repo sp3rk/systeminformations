@@ -1,4 +1,25 @@
-<mat-sidenav-contents>
+<!-- <mat-sidenav-container>
+  <mat-sidenav
+    #sidenav
+    class="sidenav"
+    mode="side"
+    position="start"
+    opened="true"
+  >
+    <mat-nav-list [style.padding-top.px]="8">
+      <a mat-list-item routerLink="/system">{{ "PAGES.SYSTEM.TITLE" | translate }}</a>
+      <mat-divider></mat-divider>
+      <a mat-list-item routerLink="/cpu">{{ "PAGES.CPU.TITLE" | translate }}</a>
+    </mat-nav-list>
+  </mat-sidenav>
 
-</mat-sidenav-contents>
+  <mat-sidenav-content
+    [style.margin-left.px]="210"
+  >
+    <main class="main-content">
+      <router-outlet></router-outlet>
+    </main>
+  </mat-sidenav-content>
+</mat-sidenav-container> -->
+
 <router-outlet></router-outlet>

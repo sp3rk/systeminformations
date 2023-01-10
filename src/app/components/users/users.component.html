@@ -1,0 +1,19 @@
+<div fxLayout="row wrap" fxLayoutGap="10px grid" fxFlexFill>
+  <ng-container *ngFor="let user of users">
+    <div fxFlex="100%" fxFlex.gt-sm="50%" fxFlex.gt-lg="33.33%">
+      <table class="keyValue">
+        <thead>
+          <tr>
+            <th colspan="2">{{ user.user }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of user | keyvalue">
+            <td class="key">{{ item.key | translate }}</td>
+            <td class="value">{{ item.value }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </ng-container>
+</div>

@@ -2,14 +2,33 @@
   "PAGES": {
     "HOME": {
       "TITLE": "Get your systeminformation"
-    },
-    "CPU": {
-      "TITLE": "CPU",
-      "BACK_TO_HOME": "Back to Home"
-    },
-    "SYSTEM": {
-      "TITLE": "System",
-      "BACK_TO_HOME": "Back to Home"
     }
+  },
+  "SystemData": {
+    "TITLE": "System data"
+  },
+  "BiosData": {
+    "TITLE": "Bios data"
+  },
+  "BaseboardData": {
+    "TITLE": "Baseboard data"
+  },
+  "ChassisData": {
+    "TITLE": "Chassis data"
+  },
+  "OsData": {
+    "TITLE": "Os data"
+  },
+  "UuidData": {
+    "TITLE": "Uuid data"
+  },
+  "VersionData": {
+    "TITLE": "Version data"
+  },
+  "CpuData": {
+    "TITLE": "Cpu data"
+  },
+  "NetworkInterfacesData": {
+    "TITLE": "Network Interfaces data"
   }
 }

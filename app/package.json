@@ -5,7 +5,7 @@
     "name": "Kevin Püchl",
     "email": "kevin.puechl@googlemail.com"
   },
-  "version": "0.0.1",
+  "version": "0.3.0",
   "main": "main.js",
   "private": true,
   "dependencies": {

@@ -1,6 +1,9 @@
+import * as si from 'systeminformation';
+
 import { Component, OnInit } from '@angular/core';
 
-import { Router } from '@angular/router';
+import { DataService } from '../core/services';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -9,9 +12,17 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
+  staticData$: Observable<si.Systeminformation.StaticData>;
+  users$: Observable<si.Systeminformation.UserData[]>;
+  dynamicData$: Observable<si.Systeminformation.DynamicData>;
+
   constructor(
-    private router: Router
-  ) {  }
+    private dataService: DataService
+  ) {
+    this.staticData$ = this.dataService.staticData$;
+    this.users$ = this.dataService.usercData$;
+    this.dynamicData$ = this.dataService.dynamicData$;
+  }
 
   ngOnInit(): void {
     console.log('HomeComponent -> ngOnInit');

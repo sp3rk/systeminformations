@@ -1,6 +1,10 @@
 import { CommonModule } from '@angular/common';
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule } from '@angular/forms';
-import { MatSidenavModule } from '@angular/material';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatCardModule } from '@angular/material/card';
+import { MatListModule } from '@angular/material/list';
+import { MatSidenavModule } from '@angular/material/sidenav';
 import { NgModule } from '@angular/core';
 import { PageNotFoundComponent } from './components/';
 import { TranslateModule } from '@ngx-translate/core';
@@ -13,7 +17,11 @@ import { WebviewDirective } from './directives/';
     TranslateModule,
     WebviewDirective,
     FormsModule,
-    MatSidenavModule
+    LayoutModule,
+    FlexLayoutModule,
+    MatSidenavModule,
+    MatListModule,
+    MatCardModule,
   ]
 })
 export class SharedModule { }

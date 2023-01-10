@@ -1,14 +1,89 @@
-<div class="container">
-  <h1 class="title">
-    {{ 'PAGES.CPU.TITLE' | translate }}
-  </h1>
 
-  <a routerLink="/">{{ 'PAGES.CPU.BACK_TO_HOME' | translate }}</a>
-
-  <ng-container *ngIf="cpu$ | async; else loading">
-    <pre class="json">{{ cpu$ | async | json }}</pre>
-  </ng-container>
-
-  <ng-template #loading><p style="color: #fff;">Loading ...</p></ng-template>
-
-</div>
+  <table class="keyValue">
+    <tbody>
+      <tr>
+        <td class="key">{{ "manufacturer" | translate }}</td>
+        <td class="value">{{ cpu.manufacturer }}</td>
+      </tr>
+      <tr>
+        <td class="key">{{ "brand" | translate }}</td>
+        <td class="value">{{ cpu.brand }}</td>
+      </tr>
+      <tr>
+        <td class="key">{{ "speed" | translate }}</td>
+        <td class="value">{{ cpu.speed }}</td>
+      </tr>
+      <tr>
+        <td class="key">{{ "speedMin" | translate }}</td>
+        <td class="value">{{ cpu.speedMin }}</td>
+      </tr>
+      <tr>
+        <td class="key">{{ "speedMax" | translate }}</td>
+        <td class="value">{{ cpu.speedMax }}</td>
+      </tr>
+      <tr>
+        <td class="key">{{ "governor" | translate }}</td>
+        <td class="value">{{ cpu.governor }}</td>
+      </tr>
+      <tr>
+        <td class="key">{{ "cores" | translate }}</td>
+        <td class="value">{{ cpu.cores }}</td>
+      </tr>
+      <tr>
+        <td class="key">{{ "physicalCores" | translate }}</td>
+        <td class="value">{{ cpu.physicalCores }}</td>
+      </tr>
+      <tr>
+        <td class="key">{{ "performanceCores" | translate }}</td>
+        <td class="value">{{ cpu.performanceCores }}</td>
+      </tr>
+      <tr>
+        <td class="key">{{ "efficiencyCores" | translate }}</td>
+        <td class="value">{{ cpu.efficiencyCores }}</td>
+      </tr>
+      <tr>
+        <td class="key">{{ "processors" | translate }}</td>
+        <td class="value">{{ cpu.processors }}</td>
+      </tr>
+      <tr>
+        <td class="key">{{ "socket" | translate }}</td>
+        <td class="value">{{ cpu.socket }}</td>
+      </tr>
+      <tr>
+        <td class="key">{{ "vendor" | translate }}</td>
+        <td class="value">{{ cpu.vendor }}</td>
+      </tr>
+      <tr>
+        <td class="key">{{ "family" | translate }}</td>
+        <td class="value">{{ cpu.family }}</td>
+      </tr>
+      <tr>
+        <td class="key">{{ "model" | translate }}</td>
+        <td class="value">{{ cpu.model }}</td>
+      </tr>
+      <tr>
+        <td class="key">{{ "stepping" | translate }}</td>
+        <td class="value">{{ cpu.stepping }}</td>
+      </tr>
+      <tr>
+        <td class="key">{{ "revision" | translate }}</td>
+        <td class="value">{{ cpu.revision }}</td>
+      </tr>
+      <tr>
+        <td class="key">{{ "voltage" | translate }}</td>
+        <td class="value">{{ cpu.voltage }}</td>
+      </tr>
+      <tr>
+        <td class="key">{{ "flags" | translate }}</td>
+        <td class="value">{{ cpu.flags }}</td>
+      </tr>
+      <tr>
+        <td class="key">{{ "virtualization" | translate }}</td>
+        <td class="value">{{ cpu.virtualization }}</td>
+      </tr>
+      <tr>
+        <td class="key">{{ "cache" | translate }}</td>
+        <td class="value">{{ cpu.cache }}</td>
+      </tr>
+    </tbody>
+  </table>

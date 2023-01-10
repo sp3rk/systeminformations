@@ -1,51 +1,179 @@
+@import "./spektra-theme.scss";
+
 /* You can add global styles to this file, and also import other style files */
-html, body {
-  margin: 0;
+html,
+body {
+  margin : 10px;
   padding: 0;
 
-  height: 100%;
+  height     : calc(100% - 20px);
   font-family: Arial, Helvetica, sans-serif;
 }
 
-/* CAN (MUST) BE REMOVED ! Sample Global style */
-.container {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background-color: #000;
+.mat-drawer-content {
+  height: 100vh !important;
+}
 
-  .title {
-    color: white;
-    margin: 0;
-    padding: 50px 20px;
-  }
+mat-sidenav {
+  min-width: 200px;
+}
 
-  a {
-    color: #fff !important;
-    text-transform: uppercase;
-    text-decoration: none;
-    background: #ed3330;
-    padding: 20px;
-    border-radius: 5px;
-    display: inline-block;
-    border: none;
-    transition: all 0.4s ease 0s;
+pre {
+  white-space: pre-wrap;
+}
 
-    &:hover {
-      background: #fff;
-      color: #ed3330 !important;
-      letter-spacing: 1px;
-      -webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
-      -moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
-      box-shadow: 5px 40px -10px rgba(0,0,0,0.57);
-      transition: all 0.4s ease 0s;
+mat-card {
+  // margin-bottom: 10px;
+  height : 100%;
+  padding: 0 !important;
+
+  mat-card-header {
+    padding                : 10px 3px;
+    background-color       : lighten(#0e5389, 5%);
+    color                  : #fff;
+    border-top-left-radius : inherit;
+    border-top-right-radius: inherit;
+
+    div.mat-card-avatar {
+      .mat-icon {
+        width    : 40px;
+        height   : 40px;
+        font-size: 38px;
+      }
+    }
+
+    .mat-card-header-text {
+      margin: auto 16px;
+    }
+
+    mat-card-title:only-child {
+      margin: 0 !important;
+    }
+
+    mat-card-title {
+      mat-icon {
+        vertical-align: bottom;
+      }
+    }
+
+    mat-card-subtitle {
+      color        : #fff !important;
+      margin-bottom: 0 !important;
     }
   }
 
-  .json{
-    color: #fff;
+  mat-card-content {
+    padding: 10px;
   }
 }
 
+table {
+  $tr-height: 2.5em;
+
+  width: 100%;
+
+  tbody {
+    tr {
+      height    : $tr-height !important;
+      min-height: $tr-height !important;
+
+      &:hover {
+        color           : #fff !important;
+        background-color: #0e5389 !important;
+
+        td {
+          color: #fff;
+        }
+      }
+
+      &:nth-child(odd) {
+        background-color: #ededed;
+      }
+
+      td {
+        &.mat-cell {
+          text-align  : right;
+          border-right: 1px solid #fff;
+          padding     : 0 5px 0 5px;
+
+          &.text-center {
+            text-align: center;
+          }
+
+          &:first-of-type {
+            padding-left: 5px;
+          }
+
+          &.actions {
+            text-align: right;
+          }
+
+          button {
+            line-height: 26px;
+            padding    : 0 8px;
+          }
+        }
+      }
+    }
+  }
+
+  &.keyValue {
+    border-spacing: 1px;
+
+    thead {
+      th {
+        text-align      : center;
+        background-color: #b7cbdc;
+      }
+    }
+
+    tbody {
+      tr {
+        height    : 2em !important;
+        min-height: 2em !important;
+      }
+    }
+
+    tfoot {
+      td {
+        background-color: #b7cbdc;
+      }
+    }
+
+    td,
+    th {
+      padding: 3px;
+
+      &.key {
+        width        : 220px;
+        padding-right: 10px;
+        text-align   : end;
+
+        &.required::after {
+          content: " *";
+        }
+      }
+
+      &.value {
+        padding-left: 10px;
+
+        &.empty {
+          background-color: rgba($color: #ffc107, $alpha: 0.5);
+        }
+      }
+
+      &.action {
+        text-align    : center;
+        width         : 30px;
+        padding-top   : 0;
+        padding-bottom: 0;
+        cursor        : pointer;
+
+        .mat-icon {
+          width : 20px;
+          height: 20px;
+        }
+      }
+    }
+  }
+}

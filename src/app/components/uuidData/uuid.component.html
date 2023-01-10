@@ -1,0 +1,8 @@
+<table class="keyValue">
+  <tbody>
+    <tr *ngFor="let item of uuid | keyvalue">
+      <td class="key">{{ item.key | translate }}</td>
+      <td class="value">{{ item.value }}</td>
+    </tr>
+  </tbody>
+</table>

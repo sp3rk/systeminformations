@@ -1,9 +1,46 @@
-.container {
-    background: url(../../assets/background.jpg) no-repeat center fixed;
-    -webkit-background-size: cover; /* pour anciens Chrome et Safari */
-    background-size: cover; /* version standardisée */
+:host {}
+
+.multi-spinner-container {
+    width   : 150px;
+    height  : 150px;
+    position: relative;
+    margin  : 30px auto;
+    overflow: hidden;
 }
 
-:host {
+.multi-spinner {
+    position         : absolute;
+    width            : calc(100% - 9.9px);
+    height           : calc(100% - 9.9px);
+    border           : 5px solid transparent;
+    border-top-color : #0e5389;
+    border-radius    : 50%;
+    -webkit-animation: spin 5s cubic-bezier(0.17, 0.49, 0.96, 0.76) infinite;
+    animation        : spin 5s cubic-bezier(0.17, 0.49, 0.96, 0.76) infinite;
+}
 
+
+@-webkit-keyframes spin {
+    from {
+        -webkit-transform: rotate(0deg);
+        transform        : rotate(0deg);
+    }
+
+    to {
+        -webkit-transform: rotate(360deg);
+        transform        : rotate(360deg);
+    }
+}
+
+
+@keyframes spin {
+    from {
+        -webkit-transform: rotate(0deg);
+        transform        : rotate(0deg);
+    }
+
+    to {
+        -webkit-transform: rotate(360deg);
+        transform        : rotate(360deg);
+    }
 }

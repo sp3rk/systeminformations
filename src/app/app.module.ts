@@ -3,14 +3,13 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { CoreModule } from './core/core.module';
-import { CpuModule } from './components/cpu/cpu.module';
 import { FormsModule } from '@angular/forms';
 import { HomeModule } from './home/home.module';
 import { NgModule } from '@angular/core';
 import { SharedModule } from './shared/shared.module';
-import { SystemModule } from './components/system/system.module';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 // NG Translate
@@ -29,13 +28,12 @@ const httpLoaderFactory = (http: HttpClient): TranslateHttpLoader =>  new Transl
   declarations: [AppComponent],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
     CoreModule,
     SharedModule,
     HomeModule,
-    CpuModule,
-    SystemModule,
     AppRoutingModule,
     TranslateModule.forRoot({
       loader: {

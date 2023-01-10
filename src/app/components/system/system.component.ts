@@ -1,9 +1,6 @@
 import * as si from 'systeminformation';
 
-import { Component, OnInit } from '@angular/core';
-
-import { DataService } from '../../core/services/data.service';
-import { Observable } from 'rxjs';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-system',
@@ -11,16 +8,14 @@ import { Observable } from 'rxjs';
   styleUrls: ['./system.component.scss']
 })
 export class SystemComponent implements OnInit {
+  @Input() system: si.Systeminformation.SystemData;
 
-  system$: Observable<si.Systeminformation.SystemData>;
-
-  constructor(private dataService: DataService) {
+  constructor() {
 
   }
 
   ngOnInit(): void {
-    console.log('SystemComponent INIT');
-    this.system$ = this.dataService.system$;
+    console.log('SystemComponent -> ngOnInit()');
   }
 
 }

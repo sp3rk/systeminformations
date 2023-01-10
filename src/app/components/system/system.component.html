@@ -1,14 +1,38 @@
-<div class="container">
-  <h1 class="title">
-    {{ 'PAGES.SYSTEM.TITLE' | translate }}
-  </h1>
 
-  <a routerLink="/">{{ 'PAGES.SYSTEM.BACK_TO_HOME' | translate }}</a>
+  <table class="keyValue">
+    <tbody>
+      <tr>
+        <td class="key">{{ "manufacturer" | translate }}</td>
+        <td class="value">{{ system.manufacturer }}</td>
+      </tr>
+      <tr>
+        <td class="key">{{ "model" | translate }}</td>
+        <td class="value">{{ system.model }}</td>
+      </tr>
+      <tr>
+        <td class="key">{{ "version" | translate }}</td>
+        <td class="value">{{ system.version }}</td>
+      </tr>
+      <tr>
+        <td class="key">{{ "serial" | translate }}</td>
+        <td class="value">{{ system.serial }}</td>
+      </tr>
+      <tr>
+        <td class="key">{{ "uuid" | translate }}</td>
+        <td class="value">{{ system.uuid }}</td>
+      </tr>
+      <tr>
+        <td class="key">{{ "sku" | translate }}</td>
+        <td class="value">{{ system.sku }}</td>
+      </tr>
+      <tr>
+        <td class="key">{{ "virtual" | translate }}</td>
+        <td class="value">{{ system.virtual }}</td>
+      </tr>
+      <tr *ngIf="system.virtual">
+        <td class="key">{{ "virtualHost" | translate }}</td>
+        <td class="value">{{ system.virtualHost }}</td>
+      </tr>
+    </tbody>
+  </table>
 
-  <ng-container *ngIf="system$ | async; else loading">
-    <pre class="json">{{ system$ | async | json }}</pre>
-  </ng-container>
-
-  <ng-template #loading><p style="color: #fff;">Loading ...</p></ng-template>
-
-</div>

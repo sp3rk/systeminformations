@@ -1,9 +1,150 @@
-<div class="container">
-  <h1 class="title">
-    {{ 'PAGES.HOME.TITLE' | translate }}
-  </h1>
+<div fxLayout="row wrap" fxLayoutGap="10px grid" fxFlexFill>
+  <ng-container *ngIf="users$ | async as user">
+    <div fxFlex="100%">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>{{ "users" | translate }}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <app-users [users]="user"></app-users>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </ng-container>
 
-  <a routerLink="/system">{{ 'PAGES.SYSTEM.TITLE' | translate }}</a>
-  <a routerLink="/cpu">{{ 'PAGES.CPU.TITLE' | translate }}</a>
+  <ng-container *ngIf="dynamicData$ | async as data">
+    <div fxFlex="100%" fxFlex.gt-sm="50%" fxFlex.gt-lg="33.33%">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>{{ "dynamic" | translate }}</mat-card-title>
+        </mat-card-header>
+        <pre>{{ dynamicData$ | async | json }}</pre>
+      </mat-card>
+    </div>
+  </ng-container>
 
+  <ng-container *ngIf="staticData$ | async as data; else loading">
+    <div fxFlex="100%" fxFlex.gt-sm="50%" fxFlex.gt-lg="33.33%">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>{{ "SystemData.TITLE" | translate }}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <app-system [system]="data.system"></app-system>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <div fxFlex="100%" fxFlex.gt-sm="50%" fxFlex.gt-lg="33.33%">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>{{ "BiosData.TITLE" | translate }}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <app-bios [bios]="data.bios"></app-bios>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <div fxFlex="100%" fxFlex.gt-sm="50%" fxFlex.gt-lg="33.33%">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>{{
+            "BaseboardData.TITLE" | translate
+          }}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <app-baseboard [baseboard]="data.baseboard"></app-baseboard>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <div fxFlex="100%" fxFlex.gt-sm="50%" fxFlex.gt-lg="33.33%">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>{{ "ChassisData.TITLE" | translate }}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <app-chassis [chassis]="data.chassis"></app-chassis>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <div fxFlex="100%" fxFlex.gt-sm="50%" fxFlex.gt-lg="33.33%">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>{{ "OsData.TITLE" | translate }}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <app-os [os]="data.os"></app-os>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <div fxFlex="100%" fxFlex.gt-sm="50%" fxFlex.gt-lg="33.33%">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>{{ "UuidData.TITLE" | translate }}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <app-uuid [uuid]="data.uuid"></app-uuid>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <div fxFlex="100%" fxFlex.gt-sm="50%" fxFlex.gt-lg="33.33%">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>{{ "VersionData.TITLE" | translate }}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <app-versions [versions]="data.versions"></app-versions>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <div fxFlex="100%" fxFlex.gt-sm="50%" fxFlex.gt-lg="33.33%">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>{{ "CpuData.TITLE" | translate }}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <app-cpu [cpu]="data.cpu"></app-cpu>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <div fxFlex="100%">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>{{
+            "NetworkInterfacesData.TITLE" | translate
+          }}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <app-net [net]="data.net"></app-net>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </ng-container>
 </div>
+
+<ng-template #loading>
+  <div fxLayout="column" fxFlexFill fxLayoutAlign="center center">
+
+    <div class="multi-spinner-container">
+      <div class="multi-spinner">
+        <div class="multi-spinner">
+          <div class="multi-spinner">
+            <div class="multi-spinner">
+              <div class="multi-spinner">
+                <div class="multi-spinner"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="width: 300px; text-align: center">Loading ...</div>
+  </div>
+</ng-template>
