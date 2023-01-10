@@ -18,14 +18,13 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private dataService: DataService
-  ) {
-    this.staticData$ = this.dataService.staticData$;
-    this.users$ = this.dataService.usercData$;
-    this.dynamicData$ = this.dataService.dynamicData$;
-  }
+  ) { }
 
   ngOnInit(): void {
     console.log('HomeComponent -> ngOnInit');
+    this.staticData$ = this.dataService.staticData$;
+    this.users$ = this.dataService.usercData$;
+    this.dynamicData$ = this.dataService.dynamicData$;
   }
 
 }
