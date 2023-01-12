@@ -2,15 +2,117 @@ import * as fs from 'fs';
 import * as path from 'path';
 import * as si from 'systeminformation';
 
-import { BrowserWindow, app, ipcMain, screen } from 'electron';
+import { BrowserWindow, Menu, MenuItemConstructorOptions, app, dialog, ipcMain, shell } from 'electron';
 
 let win: BrowserWindow = null;
-const args = process.argv.slice(1),
-  serve = args.some(val => val === '--serve');
+let staticData: si.Systeminformation.StaticData = null;
+const args = process.argv.slice(1);
+const serve = args.some(val => val === '--serve');
+const isMac = process.platform === 'darwin'
+
+const menu = Menu.buildFromTemplate(
+  [
+    // { role: 'appMenu' }
+    ...(isMac ? [{
+      label: app.name,
+      submenu: [
+        { role: 'about' },
+        { type: 'separator' },
+        { role: 'services' },
+        { type: 'separator' },
+        { role: 'hide' },
+        { role: 'hideothers' },
+        { role: 'unhide' },
+        { type: 'separator' },
+        { role: 'quit' }
+      ]
+    }] : []) as MenuItemConstructorOptions[],
+    // { role: 'fileMenu' }
+    {
+      label: 'File',
+      submenu: [{ label: 'Save', click: () => { saveData(); }, accelerator: "CmdOrCtrl+S", },
+      isMac ? { role: 'close' } : { role: 'quit' }
+      ] as MenuItemConstructorOptions[]
+    },
+    // { role: 'editMenu' }
+    {
+      label: 'Edit',
+      submenu: [
+        { role: 'undo' },
+        { role: 'redo' },
+        { type: 'separator' },
+        { role: 'cut' },
+        { role: 'copy' },
+        { role: 'paste' },
+        ...(isMac ? [
+          { role: 'pasteAndMatchStyle' },
+          { role: 'delete' },
+          { role: 'selectAll' },
+          { type: 'separator' },
+          {
+            label: 'Speech',
+            submenu: [
+              { role: 'startSpeaking' },
+              { role: 'stopSpeaking' }
+            ]
+          }
+        ] : [
+          { role: 'delete' },
+          { type: 'separator' },
+          { role: 'selectAll' }
+        ]) as MenuItemConstructorOptions[]
+      ]
+    },
+    // { role: 'viewMenu' }
+    {
+      label: 'View',
+      submenu: [
+        { role: 'reload' },
+        { role: 'forceReload' },
+        { role: 'toggleDevTools' },
+        { type: 'separator' },
+        { role: 'resetZoom' },
+        { role: 'zoomIn' },
+        { role: 'zoomOut' },
+        { type: 'separator' },
+        { role: 'togglefullscreen' }
+      ]
+    },
+    // { role: 'windowMenu' }
+    {
+      label: 'Window',
+      submenu: [
+        { role: 'minimize' },
+        { role: 'zoom' },
+        ...(isMac ? [
+          { type: 'separator' },
+          { role: 'front' },
+          { type: 'separator' },
+          { role: 'window' }
+        ] : [
+          { role: 'close' }
+        ]) as MenuItemConstructorOptions[]
+      ]
+    },
+    {
+      role: 'help',
+      submenu: [
+        {
+          label: 'Learn More',
+          click: async () => {
+            await shell.openExternal('https://electronjs.org')
+          }
+        }
+      ]
+    }
+  ]
+);
+
+Menu.setApplicationMenu(menu)
+
 
 function createWindow(): BrowserWindow {
-//
-  const size = screen.getPrimaryDisplay().workAreaSize;
+  // const size = screen.getPrimaryDisplay().workAreaSize;
 
   // Create the browser window.
   win = new BrowserWindow({
@@ -45,6 +147,10 @@ function createWindow(): BrowserWindow {
     const url = new URL(path.join('file:', __dirname, pathIndex));
     win.loadURL(url.href);
   }
+
+win.on('ready-to-show', () => {
+  getStaticData();
+});
 
   // Emitted when the window is closed.
   win.on('closed', () => {
@@ -88,8 +194,40 @@ try {
   // throw e;
 }
 
+async function saveData() {
+
+  dialog.showSaveDialog({ title: 'save StaticData', defaultPath: path.join(__dirname, 'systeminformations.json') }).then(async (data) => {
+    const PATH = data.filePath;
+    if (!data.canceled && PATH) {
+
+      fs.writeFile(PATH, JSON.stringify(staticData), (err) => {
+        if (err) { console.error(err); }
+        else {
+          console.debug('write file to: ', PATH);
+          dialog.showMessageBox(null, {
+            type: 'info',
+            buttons: ['Ok'],
+            message: `write file to: ${PATH}`
+          });
+        }
+      });
+    }
+  });
+}
+
+async function getStaticData(): Promise<si.Systeminformation.StaticData> {
+  return new Promise(async (resolve, reject) => {
+    if(staticData) {
+      resolve(staticData);
+    } else {
+      staticData = await si.getStaticData();
+      resolve(staticData);
+    }
+  });
+}
+
 ipcMain.handle('si-getStaticData', () => {
-  return si.getStaticData();
+  return getStaticData();
 });
 
 ipcMain.handle('si-getDynamicData', () => {
